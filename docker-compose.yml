@@ -1,0 +1,57 @@
+version: "3.8"
+services:
+  patient:
+    image: 'patient:latest'
+    container_name: patient
+    ports:
+      - "8081:8081"
+    depends_on:
+      - mysql
+    restart: on-failure
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/mediScreen
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=password
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=create
+      - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.MySQL5Dialect
+      - SPRING_JPA_SHOW-SQL=true
+
+  note:
+    image: 'note:latest'
+    container_name: note
+    ports:
+      - "8082:8080"
+    depends_on:
+      - mongodb
+    restart: on-failure
+    environment:
+      - SPRING_DATA_MONGODB_DATABASE=mediscreen_note
+      - SPRING_DATA_MONGODB_USERNAME=rootuser
+      - SPRING_DATA_MONGODB_PASSWORD=rootpass
+      - SPRING_DATA_MONGODB_HOST=mongodb
+
+  mysql:
+    image: 'arm64v8/mysql:oracle'
+    container_name: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=mediScreen
+    ports:
+      - "3307:3306"
+
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=rootuser
+      - MONGO_INITDB_ROOT_PASSWORD=rootpass
+
+  frontend:
+    image: frontend:latest
+    build:
+      context: .
+    container_name: frontend
+    ports:
+      - "8080:8080"
