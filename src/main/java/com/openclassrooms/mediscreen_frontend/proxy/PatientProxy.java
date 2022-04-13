@@ -10,7 +10,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @Validated
-@FeignClient(name = "patientApi", url = "http://localhost:8081/api/v1/patient/")
+@FeignClient(name = "patientApi", url = "http://patient:8081/api/v1/patient/")
 public interface PatientProxy {
 
     @GetMapping("/list")

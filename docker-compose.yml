@@ -30,6 +30,12 @@ services:
       - SPRING_DATA_MONGODB_PASSWORD=rootpass
       - SPRING_DATA_MONGODB_HOST=mongodb
 
+  report:
+    image: report:latest
+    container_name: report
+    ports:
+      - "8083:8080"
+
   mysql:
     image: 'arm64v8/mysql:oracle'
     container_name: mysql

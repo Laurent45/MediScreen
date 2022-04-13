@@ -25,11 +25,19 @@
                         Address: <span th:text="${patient.getAddress()}"></span></br>
                         Phone: <span th:text="${patient.getPhone()}"></span>
                     </p>
-                    <span> </span>
+
+                </div>
+                <div class="border border-dark p-3 bg-secondary text-white">
+                    <h2 class="text-center">Report</h2>
+                    <p class="text-left">
+                        Age: <span th:text="${report.getAge()}"></span></br>
+                        Diabetes assessment is: <span th:text="${report.getLevel()}"></span>
+                    </p>
                 </div>
             </div>
             <div class="col">
                 <div class="p-3 py-5">
+                    <a class="btn btn-success" th:href="@{/ui/patient/}">Home</a>
                     <div th:if="${noteCreated}" th:utext="${noteCreated}" class="alert alert-success text-center"></div>
                     <div th:if="${noteDeleted}" th:utext="${noteDeleted}" class="alert alert-danger text-center"></div>
                     <div th:if="${noteUpdated}" th:utext="${noteUpdated}" class="alert alert-warning text-center"></div>

@@ -6,8 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@FeignClient(name = "noteApi", url = "http://localhost:8082/api/v1" +
-        "/notePatient/")
+@FeignClient(name = "noteApi", url = "http://note:8080/api/v1/notePatient/")
 public interface NoteProxy {
 
     @GetMapping("/allNotes")

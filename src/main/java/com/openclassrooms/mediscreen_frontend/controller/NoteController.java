@@ -1,10 +1,12 @@
 package com.openclassrooms.mediscreen_frontend.controller;
 
 import com.openclassrooms.mediscreen_frontend.dto.NoteDTO;
+import com.openclassrooms.mediscreen_frontend.dto.ReportDTO;
 import com.openclassrooms.mediscreen_frontend.model.Note;
 import com.openclassrooms.mediscreen_frontend.model.Patient;
 import com.openclassrooms.mediscreen_frontend.proxy.NoteProxy;
 import com.openclassrooms.mediscreen_frontend.proxy.PatientProxy;
+import com.openclassrooms.mediscreen_frontend.proxy.ReportProxy;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +23,7 @@ public class NoteController {
 
     private final PatientProxy patientProxy;
     private final NoteProxy noteProxy;
+    private final ReportProxy reportProxy;
 
     @GetMapping("/{id}")
     public String getNoteByPatientId(@PathVariable("id") Long patientId
@@ -29,6 +32,8 @@ public class NoteController {
         model.addAttribute("patient", patient);
         List<Note> notes = noteProxy.getNotesByPatientId(patientId);
         model.addAttribute("notes", notes);
+        ReportDTO report = reportProxy.getReport(patientId);
+        model.addAttribute("report", report);
         model.addAttribute("noteDTO", new NoteDTO());
         return "note/index";
     }
