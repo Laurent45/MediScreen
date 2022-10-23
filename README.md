@@ -1,8 +1,8 @@
 # Mediscreen
 
-Mediscreen is an openclassrooms project that I have developed while this 
+Mediscreen is an openclassrooms project that I have developed while this
 formation.
-The purpose of this project is to create multiple services in order to 
+The purpose of this project is to create multiple services in order to
 manage patient information in private clinic.
 
 ## Getting Started
@@ -24,7 +24,7 @@ Requirements for the software and other tools to build, test and push
 
     git clone --recurse-submodules https://github.com/Laurent45/Mediscreen.git
 
-Using each DockerFile in submodule project to generate the images. These 
+Using each DockerFile in submodule project to generate the images. These
 images are necessary for run the application with the docker-compose.
 
 ## Running application

@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   patient:
-    image: 'patient:latest'
+    image: 'mediscreen_patient:latest'
     container_name: patient
     ports:
       - "8081:8081"
@@ -17,7 +17,7 @@ services:
       - SPRING_JPA_SHOW-SQL=true
 
   note:
-    image: 'note:latest'
+    image: 'mediscreen_note:latest'
     container_name: note
     ports:
       - "8082:8080"
@@ -31,11 +31,16 @@ services:
       - SPRING_DATA_MONGODB_HOST=mongodb
 
   report:
-    image: report:latest
+    image: 'mediscreen_report:latest'
     container_name: report
     ports:
       - "8083:8080"
 
+  frontend:
+    image: 'mediscreen_frontend:latest'
+    container_name: frontend
+    ports:
+      - "8080:8080"
   mysql:
     image: 'arm64v8/mysql:oracle'
     container_name: mysql
@@ -54,10 +59,3 @@ services:
       - MONGO_INITDB_ROOT_USERNAME=rootuser
       - MONGO_INITDB_ROOT_PASSWORD=rootpass
 
-  frontend:
-    image: frontend:latest
-    build:
-      context: .
-    container_name: frontend
-    ports:
-      - "8080:8080"
