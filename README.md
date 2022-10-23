@@ -8,8 +8,7 @@ manage patient information in private clinic.
 ## Getting Started
 
 These instructions will give you a copy of the project up and running on
-your local machine for development and testing purposes. See deployment
-for notes on deploying the project on a live system.
+your local machine for development and testing purposes.
 
 ### Prerequisites
 
@@ -22,18 +21,16 @@ Requirements for the software and other tools to build, test and push
 
 
 
-    git clone --recurse-submodules https://github.com/Laurent45/Mediscreen.git
+    git clone https://github.com/Laurent45/Mediscreen.git
 
-Using each DockerFile in submodule project to generate the images. These
-images are necessary for run the application with the docker-compose.
 
 ## Running application
 
 From your project directory, start up your application by running :
 
-    docker-compose up
+    ./init.sh
 If a service failed restart this service.
-There are *.sh file (ressources/initdb/) to initialize the databases
+Rub ./init_db.sh to initialize the databases
 
 ## Api documentation
 
